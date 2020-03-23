@@ -1,0 +1,48 @@
+/*
+
+Draft for MongoDB database
+
+3 documents shall be created to provide main functionality
+
+*/
+
+
+
+// Document user_books stores array of books for each user
+
+db.user_books.insert(
+	{
+		user_id: 1,
+		books : [
+			{id: 'aa00', title: 'some title', author: 'some author'},
+			{id: 'aa01', title: 'some title', author: 'some author'}
+		]
+	}
+)
+
+// Document user_location stores latitude and longtitude of each user
+
+db.user_location.insert(
+	{
+		user_id: 1,
+		lat: 52.41,
+		long: -1.52
+	}
+)
+
+
+// Document user is used for login. Hashing function + salt for every password
+
+db.user.insert(
+	{
+		user_id: 1,
+		username: 'name',
+		passwordHash: 'anyPasswordHash'
+	}
+)
+
+
+
+
+
+
