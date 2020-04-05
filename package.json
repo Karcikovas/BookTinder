@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=app node app.js echo \" Starting app on localhost:3000\" ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "DEBUG=app nodemon app.js echo \" Starting app on localhost:3000\" ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,21 @@
     "chalk": "^4.0.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": ["node_modules/**/node_modules"],
+    "delay": 2500,
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": 4000
+    }
   }
 }
