@@ -3,8 +3,22 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const sql = require('mssql');
+
 const app = express();
 const port = process.env.PORT || 3000;
+const config = {
+  user: 'bookAdmin',
+  password: 'DX:LM2]D_MYNw+&M',
+  server: 'booktinder.database.windows.net',
+  database: 'bookTinder',
+
+  options: {
+    encrypt: true,
+  },
+};
+
+sql.connect(config).catch((err) => debug(err));
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
@@ -28,7 +42,7 @@ app.get('/', (req, res) => {
     {
       nav: [{ link: '/books', title: 'Books' },
         { link: '/authors', title: 'Authors' }],
-      title: 'Library',
+      title: 'HomePage',
     },
   );
 });
